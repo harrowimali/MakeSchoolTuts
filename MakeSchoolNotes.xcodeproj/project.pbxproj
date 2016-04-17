@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		038A7F8B1CBA3004005A1A27 /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A7F8A1CBA3004005A1A27 /* NewNoteViewController.swift */; };
+		03D087DC1CC07B8400E6D047 /* NoteDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D087DB1CC07B8400E6D047 /* NoteDisplayViewController.swift */; };
 		2EBB11371B9E3F5E005D313C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB11361B9E3F5E005D313C /* AppDelegate.swift */; };
 		2EBB113C1B9E3F5E005D313C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB113A1B9E3F5E005D313C /* Main.storyboard */; };
 		2EBB113E1B9E3F5E005D313C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EBB113D1B9E3F5E005D313C /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		038A7F8A1CBA3004005A1A27 /* NewNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
+		03D087DB1CC07B8400E6D047 /* NoteDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDisplayViewController.swift; sourceTree = "<group>"; };
 		2EBB11331B9E3F5E005D313C /* MakeSchoolNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeSchoolNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBB11361B9E3F5E005D313C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBB113B1B9E3F5E005D313C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				2EED6B601B9E53AC00CD5441 /* NotesViewController.swift */,
 				038A7F8A1CBA3004005A1A27 /* NewNoteViewController.swift */,
+				03D087DB1CC07B8400E6D047 /* NoteDisplayViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				TargetAttributes = {
 					2EBB11321B9E3F5E005D313C = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = UF8W267V78;
 					};
 				};
 			};
@@ -307,6 +311,7 @@
 				2EED6B5D1B9E535A00CD5441 /* StyleConstants.swift in Sources */,
 				2EED6B631B9E53BC00CD5441 /* NoteTableViewCell.swift in Sources */,
 				2EED6B5F1B9E539B00CD5441 /* Note.swift in Sources */,
+				03D087DC1CC07B8400E6D047 /* NoteDisplayViewController.swift in Sources */,
 				038A7F8B1CBA3004005A1A27 /* NewNoteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +433,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Frameworks",
@@ -437,6 +444,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.orcudy.MakeSchoolNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -444,6 +452,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Frameworks",
@@ -453,6 +463,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.orcudy.MakeSchoolNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

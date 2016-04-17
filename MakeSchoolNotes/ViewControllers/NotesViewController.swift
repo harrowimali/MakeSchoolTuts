@@ -11,26 +11,29 @@ import UIKit
 import RealmSwift
 
 class NotesViewController: UITableViewController {
- 
-  override func viewDidLoad() {
+    
+    
+    var selectedNote: Note?
+  
+    override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
-    
+    tableView.delegate = self
     // Do any additional setup after loading the view, typically from a nib.
 
-    do{
-        let realm = try Realm()
-        notes = realm.objects(Note).sorted("modificationDate", ascending: false)
-    }
-    catch{
-        print("handle error")
+}
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        do{
+            let realm = try Realm()
+            notes = realm.objects(Note).sorted("modificationDate",ascending: false)
+        }
+        catch{
+            print("Handle Error")
+        }
+        
     }
     
-    tableView.dataSource = self
-    tableView.delegate = self
-
-}
-  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -43,17 +46,19 @@ class NotesViewController: UITableViewController {
             tableView?.reloadData()
         }
     }
-  
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowExistingNote") {
+            let noteViewController = segue.destinationViewController as! NoteDisplayViewController
+            noteViewController.note = selectedNote
+        }
+    }
 }
 
 extension NotesViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NoteCell", forIndexPath: indexPath) as! NoteTableViewCell //1
-        
-//        cell.title.text = "Note"
-  //      cell.date.text = "Date"
-    
+        let cell = tableView.dequeueReusableCellWithIdentifier("NoteCell", forIndexPath: indexPath) as! NoteTableViewCell
         let row = indexPath.row
         let note = notes[row] as Note
         cell.note = note
@@ -83,6 +88,17 @@ extension NotesViewController {
                         realm.add(source.currentNote!)
                     }
                     
+                case "Delete":
+                    
+                    
+                    try realm.write() {
+                        realm.delete(self.selectedNote!)
+                    }
+                    
+                    let source = segue.sourceViewController as! NoteDisplayViewController
+                    source.note = nil;
+                    
+                    
                 default:
                     print("No one loves \(identifier)")
                     
@@ -98,12 +114,9 @@ extension NotesViewController {
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        //selectedNote = notes[indexPath.row]
-        //self.performSegueWithIdentifier("ShowExistingNote", sender: self)
-        /* from the end of 4, not sure what the fuck I'm supposed to do with those
-        DIRE:
-         Can you add a selectedNote variable to the class to store the selected Note? Hint you need to uncomment the first commented line so the selectedNote can be assigned.
-         */
+        selectedNote = notes[indexPath.row]
+        self.performSegueWithIdentifier("ShowExistingNote", sender: self)
+
     }
 
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool{

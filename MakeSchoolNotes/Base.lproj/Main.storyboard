@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qhm-XS-eR5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Dashboard-->
@@ -17,7 +18,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SnE-8M-M3p" id="TfO-UH-qJG">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ8-NE-wwn">
@@ -52,6 +53,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="3pw-yo-jUO" kind="show" identifier="ShowExistingNote" id="Qzq-Ic-4dR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzf-Re-kSG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,6 +72,14 @@
                     <view key="view" contentMode="scaleToFill" id="CKc-br-jkA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8p4-Mv-JP8">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <connections>
+                                    <segue destination="3pw-yo-jUO" kind="embed" identifier="ShowNewNote" id="Cuv-Pq-rUE"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add a new note" id="fcg-9R-6dt">
@@ -124,8 +136,79 @@
             </objects>
             <point key="canvasLocation" x="1905" y="-183"/>
         </scene>
+        <!--Note Display View Controller-->
+        <scene sceneID="jpm-lk-70N">
+            <objects>
+                <viewController id="3pw-yo-jUO" userLabel="Note Display View Controller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HnW-jn-tZB"/>
+                        <viewControllerLayoutGuide type="bottom" id="whi-Qj-Wul"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3B6-Ze-m5K">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcS-mI-bde">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="trash" id="M2V-Mo-9z4">
+                                        <connections>
+                                            <segue destination="PZu-3i-5yN" kind="unwind" identifier="Delete" unwindAction="unwindToSegue:" id="FYB-ZG-JZY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xwl-jd-BJO">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="42F-Ug-s8p">
+                                        <rect key="frame" x="8" y="43" width="584" height="449"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="449" id="O3q-cH-tLg"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text View lmao" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dmV-UL-OTf">
+                                        <rect key="frame" x="8" y="5" width="584" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dmV-UL-OTf" firstAttribute="top" secondItem="Xwl-jd-BJO" secondAttribute="top" constant="5" id="CkL-4T-eyR"/>
+                                    <constraint firstItem="dmV-UL-OTf" firstAttribute="trailing" secondItem="Xwl-jd-BJO" secondAttribute="trailingMargin" id="ItW-3h-jgq"/>
+                                    <constraint firstItem="dmV-UL-OTf" firstAttribute="trailing" secondItem="42F-Ug-s8p" secondAttribute="trailing" id="UZh-Xs-W2C"/>
+                                    <constraint firstItem="dmV-UL-OTf" firstAttribute="leading" secondItem="Xwl-jd-BJO" secondAttribute="leadingMargin" id="Ye6-up-7YC"/>
+                                    <constraint firstItem="dmV-UL-OTf" firstAttribute="centerX" secondItem="Xwl-jd-BJO" secondAttribute="centerX" id="feR-7A-59w"/>
+                                    <constraint firstItem="dmV-UL-OTf" firstAttribute="leading" secondItem="42F-Ug-s8p" secondAttribute="leading" id="gWs-03-aHm"/>
+                                    <constraint firstItem="42F-Ug-s8p" firstAttribute="top" secondItem="dmV-UL-OTf" secondAttribute="bottom" constant="8" symbolic="YES" id="lfK-bm-hwm"/>
+                                    <constraint firstAttribute="bottom" secondItem="42F-Ug-s8p" secondAttribute="bottom" id="teI-Jh-v9w"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xwl-jd-BJO" firstAttribute="leading" secondItem="hcS-mI-bde" secondAttribute="leading" id="7eO-l0-gnz"/>
+                            <constraint firstItem="hcS-mI-bde" firstAttribute="top" secondItem="Xwl-jd-BJO" secondAttribute="bottom" id="DV8-JY-Uvt"/>
+                            <constraint firstAttribute="trailing" secondItem="Xwl-jd-BJO" secondAttribute="trailing" id="N44-yd-XCP"/>
+                            <constraint firstItem="hcS-mI-bde" firstAttribute="bottom" secondItem="whi-Qj-Wul" secondAttribute="top" id="Y1c-py-Hyc"/>
+                            <constraint firstItem="Xwl-jd-BJO" firstAttribute="trailing" secondItem="hcS-mI-bde" secondAttribute="trailing" id="Zsf-9K-0PQ"/>
+                            <constraint firstItem="Xwl-jd-BJO" firstAttribute="top" secondItem="HnW-jn-tZB" secondAttribute="bottom" id="ugJ-Wr-ypX"/>
+                            <constraint firstItem="Xwl-jd-BJO" firstAttribute="leading" secondItem="3B6-Ze-m5K" secondAttribute="leading" id="yVW-lT-WAB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mcx-FR-Sws" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PZu-3i-5yN" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2717" y="497"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="9dT-14-kb1"/>
+        <segue reference="Qzq-Ic-4dR"/>
     </inferredMetricsTieBreakers>
 </document>

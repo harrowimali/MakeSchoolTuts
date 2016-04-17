@@ -1,16 +1,18 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AD973A403AA120D84C13DA340F4D79477029FFEF",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DA1118A47F8B156BBA418091C0AC0C49246DF97C",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "AD973A403AA120D84C13DA340F4D79477029FFEF" : 0,
-    "BA499833F80BBA4EA3625B4BFBBF6919E08C7155" : 0
+    "DA1118A47F8B156BBA418091C0AC0C49246DF97C" : 0,
+    "BA499833F80BBA4EA3625B4BFBBF6919E08C7155" : 0,
+    "AD973A403AA120D84C13DA340F4D79477029FFEF" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5BA5FACB-4B16-4C2A-9635-BA5DE4017AE9",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "AD973A403AA120D84C13DA340F4D79477029FFEF" : "MakeSchoolNotes-Swift-Project",
-    "BA499833F80BBA4EA3625B4BFBBF6919E08C7155" : "MakeSchoolNotes-Swift-Project\/Frameworks\/ConvenienceKit\/"
+    "DA1118A47F8B156BBA418091C0AC0C49246DF97C" : "Make-School-Notes-Starter-Project-starter_project\/",
+    "BA499833F80BBA4EA3625B4BFBBF6919E08C7155" : "MakeSchoolNotes-Swift-Project\/Frameworks\/ConvenienceKit\/",
+    "AD973A403AA120D84C13DA340F4D79477029FFEF" : "MakeSchoolNotes-Swift-Project"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MakeSchoolNotes",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -25,6 +27,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/MakeSchool\/ConvenienceKit.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BA499833F80BBA4EA3625B4BFBBF6919E08C7155"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/harrowimali\/MakeSchoolTuts.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DA1118A47F8B156BBA418091C0AC0C49246DF97C"
     }
   ]
 }
